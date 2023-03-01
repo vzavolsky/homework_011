@@ -24,14 +24,22 @@ public class Main {
                 androidOS = "Установите %sверсию приложения для Android по ссылке.";
         int clientDeviceYear = LocalDate.now().getYear();
         String lightVersion = (clientDeviceYear < 2015) ? "облегчённую " : "";
-        if (chooseDeviceOS == 0) System.out.printf(appleOS,lightVersion);
-        if (chooseDeviceOS == 1) System.out.printf(androidOS,lightVersion);
+        if (chooseDeviceOS == 0) {
+            System.out.printf(appleOS,lightVersion);
+        }
+        if (chooseDeviceOS == 1) {
+            System.out.printf(androidOS,lightVersion);
+        }
         System.out.println();
     }
     public static void checkTheDeliveryPossibility(int deliveryDistance) {
         int days = 1;
-        if (deliveryDistance > 20) days++;
-        if (deliveryDistance > 60) days++;
+        if (deliveryDistance > 20) {
+            days++;
+        }
+        if (deliveryDistance > 60) {
+            days++;
+        }
         if (deliveryDistance > 100) {
             System.out.println("Доставки нет.");
         } else {
