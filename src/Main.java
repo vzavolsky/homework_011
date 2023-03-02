@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
 
         checkTheLeapYear(2411);
-        checkDeviceVersionApp(0);
-        checkTheDeliveryPossibility(150);
+        checkDeviceVersionApp(1,2022);
+        System.out.println(checkTheDeliveryPossibility(50));
 
     }
 
@@ -19,11 +19,12 @@ public class Main {
             System.out.println(year + "-й год — невисокосный год.");
         }
     }
-    public static void checkDeviceVersionApp(int chooseDeviceOS) {
+    public static void checkDeviceVersionApp(int chooseDeviceOS, int clientDeviceYear) {
         String  appleOS = "Установите %sверсию приложения для iOS по ссылке.",
                 androidOS = "Установите %sверсию приложения для Android по ссылке.";
-        int clientDeviceYear = LocalDate.now().getYear();
-        String lightVersion = (clientDeviceYear < 2015) ? "облегчённую " : "";
+        int currentYear = LocalDate.now().getYear();
+        String lightVersion = (clientDeviceYear < currentYear) ? "облегчённую " : "";
+        // System.out.println(currentYear + " " + clientDeviceYear + " " + lightVersion);
         if (chooseDeviceOS == 0) {
             System.out.printf(appleOS,lightVersion);
         }
@@ -32,7 +33,7 @@ public class Main {
         }
         System.out.println();
     }
-    public static void checkTheDeliveryPossibility(int deliveryDistance) {
+    public static int checkTheDeliveryPossibility(int deliveryDistance) {
         int days = 1;
         if (deliveryDistance > 20) {
             days++;
@@ -41,9 +42,9 @@ public class Main {
             days++;
         }
         if (deliveryDistance > 100) {
-            System.out.println("Доставки нет.");
+            return -1;
         } else {
-            System.out.println("Потребуется дней: " + days);
+            return days;
         }
     }
 }
